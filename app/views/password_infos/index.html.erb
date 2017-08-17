@@ -1,0 +1,28 @@
+<form class="form-inline" action="/password_infos" method="get">
+    <div class="form-group">
+      <label for="plain_text">plain_text</label>
+      <input type="text" class="form-control" id="plain_text" name="plain_text" placeholder="一个简单的数字">
+    </div>
+    <div class="form-group">
+      <label for="pass_desc">description</label>
+      <input type="text" class="form-control" id="pass_desc" name="pass_desc" placeholder="加一点描述">
+    </div>
+    <button type="submit" class="btn btn-default">Search</button>
+  </form>
+<br/>
+<br/>
+  <table class="table table-striped">
+    <tr>
+        <th>简单数字</th>
+        <th>保护密码</th>
+        <th>描述</th>
+    </tr>
+   
+      <% @list.each_with_index do |p, index| %>
+      <tr>
+        <td><%= p.plain_pass %></td>
+        <td><%= p.secret_pass %></td>
+        <td><%= p.pass_desc %></td>
+      </tr>
+      <% end %>
+  </table>
