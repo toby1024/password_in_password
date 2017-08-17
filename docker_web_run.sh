@@ -20,8 +20,11 @@ if [ "$RUN_CONTEXT" = "prod" ]; then
     /usr/sbin/sshd
     #启动rsyslog
     /etc/init.d/rsyslog start
+     #执行assets:precompile
+    RAILS_ENV=production bundle exec rake assets:precompile
     #执行db:migrate
     RAILS_ENV=production bundle exec rake db:migrate
+
     #启动rails
     passenger start
 else
