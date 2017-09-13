@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 # Use jquery as the JavaScript library
 gem "twitter-bootstrap-rails"
+gem 'bootstrap_form'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 

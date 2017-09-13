@@ -1,31 +1,71 @@
 <div class="jumbotron">
-    <h1>选择忘记!</h1>
-    <p class="lead">生活中越来越多的密码，设置的太简单，害怕被破解，设置的太复杂，自己都忘记了，通过我们使用一个简单的有意义的数字，来记住一个复杂的，无规律的密码.</p>
-    <p><a class="btn btn-lg btn-success" href="/password_infos/new" role="button">记住一个</a></p>
-  </div>
+  <h1>选择忘记!</h1>
+  <p class="lead">生活中越来越多的密码，设置的太简单，害怕被破解，设置的太复杂，自己都忘记了，通过我们使用一个简单的有意义的数字，来记住一个复杂的，无规律的密码.</p>
+  <p><a class="btn btn-lg btn-success" href="#" data-toggle="modal" data-target="#myModal">记住一个</a></p>
+</div>
 <form class="form-inline" action="/password_infos" method="get">
-    <div class="form-group">
-      <input type="text" class="form-control" id="plain_text" name="plain_text" placeholder="一个简单的数字">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="pass_desc" name="pass_desc" placeholder="加一点描述">
-    </div>
-    <button type="submit" class="btn btn-default">Search</button>
-  </form>
+  <div class="form-group">
+    <input type="text" class="form-control" id="plain_text" name="plain_text" placeholder="一个简单的数字">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="pass_desc" name="pass_desc" placeholder="加一点描述">
+  </div>
+  <button type="submit" class="btn btn-default">Search</button>
+</form>
 <br/>
 <br/>
-  <table class="table table-striped">
+<table class="table table-striped">
+  <tr>
+    <th>简单数字</th>
+    <th>保护密码</th>
+    <th>描述</th>
+  </tr>
+
+  <% @list.each_with_index do |p, index| %>
     <tr>
-        <th>简单数字</th>
-        <th>保护密码</th>
-        <th>描述</th>
+      <td>
+        <%= p.plain_pass %>
+      </td>
+      <td>
+        <%= p.secret_pass %>
+      </td>
+      <td>
+        <%= p.pass_desc %>
+      </td>
     </tr>
-   
-      <% @list.each_with_index do |p, index| %>
-      <tr>
-        <td><%= p.plain_pass %></td>
-        <td><%= p.secret_pass %></td>
-        <td><%= p.pass_desc %></td>
-      </tr>
-      <% end %>
-  </table>
+    <% end %>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">记住一个密码</h4>
+      </div>
+      <%= bootstrap_form_tag url: '/password_infos' do |f| %>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="plain_pass">助记数字</label>
+            <input type="text" class="form-control" id="plain_pass" name="plain_pass">
+          </div>
+          <div class="form-group">
+            <label for="secret_pass">保护密码</label>
+            <input type="text" class="form-control" id="secret_pass" name="secret_pass">
+          </div>
+          <div class="form-group">
+            <label for="pass_desc">辅助描述</label>
+            <input type="text" class="form-control" id="pass_desc" name="pass_desc">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary">记住</button>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

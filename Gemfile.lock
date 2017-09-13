@@ -43,6 +43,7 @@ GEM
     arel (8.0.0)
     ast (2.3.0)
     bindex (0.5.0)
+    bootstrap_form (2.7.0)
     brakeman (3.6.2)
     builder (3.2.3)
     byebug (9.0.6)
@@ -243,6 +244,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap_form
   brakeman
   byebug
   capybara (~> 2.13)
