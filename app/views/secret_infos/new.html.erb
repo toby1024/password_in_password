@@ -1,0 +1,12 @@
+<div class="jumbotron">
+  <h1>你自己看!</h1>
+  <p class="lead">有一句话，我不敢说，可是如果不告诉你，我会疯的，给你一个链接，你自己看吧.</p>
+</div>
+<%= bootstrap_form_for(@secret_info, label_errors: true, layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-6") do |f| %>
+  <%= f.text_field :query_key, label: '查询码' %>
+  <%= f.text_field :message, label: '消息' %>
+  <%= f.text_field :pass, label: '混淆码' %>
+  <%= f.form_group do %>
+  <%= f.submit "生成链接", class: "btn btn-success" %>
+  <% end %>
+<% end %>

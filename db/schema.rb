@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817134922) do
+ActiveRecord::Schema.define(version: 20170913143350) do
 
   create_table "password_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "plain_pass", comment: "简单数字"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20170817134922) do
     t.string "pass_desc", comment: "密码说明"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "secret_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "query_key", comment: "提取key"
+    t.string "message", comment: "传递消息"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "pass"
   end
 
 end
