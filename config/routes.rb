@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home_show/index'
+
   get 'secret_infos/index'
 
   root 'welcome#index'
