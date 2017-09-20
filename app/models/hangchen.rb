@@ -1,0 +1,2 @@
+class Hangchen < ApplicationRecord
+end
